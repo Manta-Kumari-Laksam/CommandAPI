@@ -33,6 +33,8 @@ namespace CommandAPI
             
             services.AddDbContext<CommandContext>(options=> options.UseNpgsql(builder.ConnectionString));
             services.AddControllers();
+            //Used for mapping Command to CommandReadDto
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             //services.AddScoped<ICommandAPIRepo, MockCommandAPIRepo>();
             services.AddScoped<ICommandAPIRepo, SqlCommandAPIRepo>();
         }
